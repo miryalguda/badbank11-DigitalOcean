@@ -1,0 +1,55 @@
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+features:
+- buildpack-stack=ubuntu-22
+ingress:
+  rules:
+  - component:
+      name: digitalocean-frontend
+    match:
+      path:
+        prefix: /3000
+  - component:
+      name: digitalocean-backend
+    match:
+      path:
+        prefix: /
+name: oyster-app
+region: nyc
+services:
+- build_command: npm run build
+  environment_slug: node-js
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: miryalguda/badbank11-DigitalOcean
+  http_port: 8080
+  instance_count: 2
+  instance_size_slug: professional-xs
+  name: digitalocean-frontend
+  run_command: npm start
+  source_dir: frontend
+- build_command: npm install
+  environment_slug: node-js
+  envs:
+  - key: PORT
+    scope: RUN_AND_BUILD_TIME
+    value: "3260"
+  - key: MONGO_URI
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+    value: EV[1:cjLgrHtNm6EBZd8OaPktBvP+gZq4sHT4:P7zz1jJKxtF5/lU2s1iIaLlEPZkiph3WE4EvHa5oCZQv789P5i0iJVKjK4hbsBigfNfJshn93EZ5MuwV3buPHREk+7SYnhD5DkzOjGBXe5YMIqWElryS3cFifisLiFj9Fw1ryV1j9GLO/mi9HFt+/xN07LHgSkc=]
+  - key: NODE_ENV
+    scope: RUN_AND_BUILD_TIME
+    value: production
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: miryalguda/badbank11-DigitalOcean
+  http_port: 8080
+  instance_count: 2
+  instance_size_slug: professional-xs
+  name: digitalocean-backend
+  run_command: node index2.js
+  source_dir: backend
