@@ -8,10 +8,7 @@
     "build:digitalocean": "npm install --production=false && npm run build && npm ci"
     
   },
-  "engines": {
-    "node": "21.x",
-    "npm": "10.5.1"
-  },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
