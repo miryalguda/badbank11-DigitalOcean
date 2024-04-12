@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon  /backend/index2.js",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci"
-
+    
   },
   "engines": {
     "node": "21.x",
