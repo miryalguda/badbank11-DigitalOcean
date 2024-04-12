@@ -4,7 +4,7 @@
   "main": "index2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node  index2.js",
+    "dev": "nodemon  /backend/index2.js",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci"
     
   },
@@ -27,4 +27,5 @@
     "mongoose": "^8.3.1",
     "nodemon": "^3.1.0"
   }
+  
 }
