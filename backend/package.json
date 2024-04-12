@@ -4,9 +4,8 @@
   "main": "index2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index2.js",
+    "dev": "nodemon index2.js",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci"
-
   },
   "engines": {
     "node": "21.x",
